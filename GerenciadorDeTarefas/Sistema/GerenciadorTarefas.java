@@ -10,15 +10,22 @@ public class GerenciadorTarefas {
         tarefas.add(tarefa);
     }
 
-    public void removerTarefa(Tarefa tarefa) {
-        tarefas.remove(tarefa);
+    public void removerTarefa(int ID) {
+        for (int i = 0; i < tarefas.size(); i++) {
+            if (tarefas.get(i).getID() == ID) {
+                tarefas.remove(i);
+                break;
+            }
+        }
     }
 
     public void listarTarefas() {
-        for (Tarefa tarefa: tarefas) {
-            System.out.println(tarefa.getNome());}
-    }
-
-    public void removerTarefa() {
+        if (tarefas.isEmpty()) {
+            System.out.println("Não há tarefas.");
+        } else {
+            for (Tarefa tarefa : tarefas) {
+                System.out.println(tarefa.getNome());
+            }
+        }
     }
 }
