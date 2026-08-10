@@ -15,16 +15,29 @@ public class Main {
         System.out.println("Adicionar tarefa (1)");
         System.out.print("Opção: ");
 
-        if (opcao <= 0 || opcao >= 2) {
-            // Adicionar tarefa.
+        do {
+            try {
+                opcao = sc.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Isso não é uma opção.");
+                System.out.print("Tente novamente:");
+                sc.nextLine();
+            }
+        } while (opcao <= 0 || opcao > 2);
+
+        // Adicionar tarefa.
+        if (opcao == 1) {
             String nomeTarefa;
             do {
-                System.out.println("Título: ");
+                System.out.print("Título: ");
+                sc.nextLine();
                 nomeTarefa = sc.nextLine();
-            } while (nomeTarefa != null || nomeTarefa.isBlank());
+            } while (nomeTarefa == null || nomeTarefa.isBlank());
 
+            System.out.println("Tarefa adicionada!");
             Tarefa novaTarefa = new Tarefa(nomeTarefa);
             g1.adicionarTarefa(novaTarefa);
         }
+        g1.listarTarefas();
     }
 }
