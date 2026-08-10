@@ -4,6 +4,7 @@ public class Tarefa {
     private String nome;
     private int ID;
     private Estagios status;
+    private static int contadorID = 0;
 
     public String getNome() {
         return nome;
@@ -15,16 +16,6 @@ public class Tarefa {
         }
     }
 
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        if (ID > 0) {
-            this.ID = ID;
-        }
-    }
-
     public Estagios getStatus() {
         return status;
     }
@@ -33,9 +24,14 @@ public class Tarefa {
         this.status = status;
     }
 
-    public Tarefa(String nome, int ID) {
+    public int getID() {
+        return ID;
+    }
+
+    public Tarefa(String nome) {
+        contadorID++;
         this.nome = nome;
-        this.ID = ID;
+        this.ID = contadorID;
         this.status = Estagios.PENDENTE;
     }
 }
