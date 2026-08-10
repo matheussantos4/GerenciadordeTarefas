@@ -13,7 +13,9 @@ public class Main {
 
         // Menu visual do programa.
         System.out.println("---------Minhas tarefas---------");
-        System.out.println("Adicionar tarefa (1)");
+        System.out.println("(1) Adicionar tarefa");
+        System.out.println("(2) Remover tarefa");
+        System.out.println("(3) Listar tarefas");
         System.out.print("Opção: ");
 
         // Loop para garantir a seleção de opções disponíveis no algoritmo.
