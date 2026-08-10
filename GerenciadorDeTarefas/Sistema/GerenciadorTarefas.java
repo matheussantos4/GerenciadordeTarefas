@@ -6,10 +6,12 @@ public class GerenciadorTarefas {
 
     ArrayList<Tarefa> tarefas = new ArrayList<>();
 
+    // Metodo para adicionar tarefas
     public void adicionarTarefa(Tarefa tarefa) {
         tarefas.add(tarefa);
     }
 
+    // Loop para que tarefas consigam ser removidas por ID.
     public void removerTarefa(int ID) {
         for (int i = 0; i < tarefas.size(); i++) {
             if (tarefas.get(i).getID() == ID) {
@@ -19,7 +21,10 @@ public class GerenciadorTarefas {
         }
     }
 
+    // Metodo para listar tarefas existentes.
     public void listarTarefas() {
+
+        // Condicional para caso não exista tarefas.
         if (tarefas.isEmpty()) {
             System.out.println("Não há tarefas.");
         } else {
