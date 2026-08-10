@@ -11,10 +11,12 @@ public class Main {
         GerenciadorTarefas g1 = new GerenciadorTarefas();
         int opcao = 0;
 
+        // Menu visual do programa.
         System.out.println("---------Minhas tarefas---------");
         System.out.println("Adicionar tarefa (1)");
         System.out.print("Opção: ");
 
+        // Loop para garantir a seleção de opções disponíveis no algoritmo.
         do {
             try {
                 opcao = sc.nextInt();
