@@ -23,14 +23,15 @@ public class GerenciadorTarefas {
 
     // Metodo para listar tarefas existentes.
     public void listarTarefas() {
-
         // Condicional para caso não exista tarefas.
         if (tarefas.isEmpty()) {
             System.out.println("Não há tarefas.");
         } else {
+            System.out.println();
             for (Tarefa tarefa : tarefas) {
-                System.out.println(tarefa.getNome());
+                System.out.printf("ID: " + tarefa.getID() + "Título: " + tarefa.getNome() + "%n");
             }
+            System.out.println();
         }
     }
 }
