@@ -11,20 +11,29 @@ public class Main {
         GerenciadorTarefas g1 = new GerenciadorTarefas();
         int opcao = 0;
 
-        // Menu visual do programa.
-        System.out.println("---------Minhas tarefas---------");
-        System.out.println("(1) Adicionar tarefa");
-        System.out.println("(2) Remover tarefa");
-        System.out.println("(3) Listar tarefas");
-        System.out.print("Opção: ");
+        Tarefa tarefa1 = new Tarefa("acorda");
+        g1.adicionarTarefa(tarefa1);
+        Tarefa tarefa2 = new Tarefa("escvoar dente");
+        g1.adicionarTarefa(tarefa2);
+        Tarefa tarefa3 = new Tarefa("Removerlixo");
+        g1.adicionarTarefa(tarefa3);
 
         // Loop para garantir a seleção de opções disponíveis no algoritmo.
         do {
             try {
+                // Menu visual do programa.
+                System.out.println("---------Minhas tarefas---------");
+                System.out.println("(1) Adicionar tarefa");
+                System.out.println("(2) Remover tarefa");
+                System.out.println("(3) Listar tarefas");
+                System.out.println("(4) Sair");
+                System.out.print("Opção: ");
                 opcao = sc.nextInt();
+
             } catch (InputMismatchException e) {
-                System.out.println("Isso não é uma opção.");
-                System.out.print("Tente novamente: ");
+                System.out.println();
+                System.out.println("Opção inválida.");
+                System.out.println();
                 sc.nextLine();
             }
 
@@ -46,12 +55,11 @@ public class Main {
                 int IDremover = 0;
                 do {
                     try {
-                        System.out.println("ID da tarefa a remover: ");
                         g1.listarTarefas();
+                        System.out.print("ID da tarefa a remover: ");
                         IDremover = sc.nextInt();
                         if (IDremover <= 0) {
                             System.out.println("ID inválido.");
-                            System.out.print("Tente novamente: ");
                             continue;
                         }
                         g1.removerTarefa(IDremover);
@@ -59,10 +67,18 @@ public class Main {
                         System.out.println("ID inválido!");
                         sc.nextLine();
                     }
+                    System.out.println("Tarefa removida!");
+                    
                 } while (IDremover <= 0);
             }
 
-        } while (opcao <= 0 || opcao > 2);
+            if (opcao == 3) {
+                g1.listarTarefas();
+            }
+        }
+
+        while (opcao != 4);
+        System.out.println("Saindo...");
         sc.close();
     }
 }

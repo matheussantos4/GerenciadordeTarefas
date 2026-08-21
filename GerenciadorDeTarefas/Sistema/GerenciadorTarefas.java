@@ -29,7 +29,7 @@ public class GerenciadorTarefas {
         } else {
             System.out.println();
             for (Tarefa tarefa : tarefas) {
-                System.out.printf("ID: " + tarefa.getID() + "Título: " + tarefa.getNome() + "%n");
+                System.out.printf("ID:" + tarefa.getID() + " " + tarefa.getNome() + "%n");
             }
             System.out.println();
         }
