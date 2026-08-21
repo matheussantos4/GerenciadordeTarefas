@@ -24,24 +24,45 @@ public class Main {
                 opcao = sc.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("Isso não é uma opção.");
-                System.out.print("Tente novamente:");
+                System.out.print("Tente novamente: ");
                 sc.nextLine();
             }
+
+            // Adicionar tarefa.
+            if (opcao == 1) {
+                String nomeTarefa;
+                do {
+                    System.out.print("Título: ");
+                    sc.nextLine();
+                    nomeTarefa = sc.nextLine();
+                } while (nomeTarefa == null || nomeTarefa.isBlank());
+
+                System.out.println("Tarefa adicionada!");
+                Tarefa novaTarefa = new Tarefa(nomeTarefa);
+                g1.adicionarTarefa(novaTarefa);
+            }
+
+            if (opcao == 2) {
+                int IDremover = 0;
+                do {
+                    try {
+                        System.out.println("ID da tarefa a remover: ");
+                        g1.listarTarefas();
+                        IDremover = sc.nextInt();
+                        if (IDremover <= 0) {
+                            System.out.println("ID inválido.");
+                            System.out.print("Tente novamente: ");
+                            continue;
+                        }
+                        g1.removerTarefa(IDremover);
+                    } catch (InputMismatchException e) {
+                        System.out.println("ID inválido!");
+                        sc.nextLine();
+                    }
+                } while (IDremover <= 0);
+            }
+
         } while (opcao <= 0 || opcao > 2);
-
-        // Adicionar tarefa.
-        if (opcao == 1) {
-            String nomeTarefa;
-            do {
-                System.out.print("Título: ");
-                sc.nextLine();
-                nomeTarefa = sc.nextLine();
-            } while (nomeTarefa == null || nomeTarefa.isBlank());
-
-            System.out.println("Tarefa adicionada!");
-            Tarefa novaTarefa = new Tarefa(nomeTarefa);
-            g1.adicionarTarefa(novaTarefa);
-        }
-        g1.listarTarefas();
+        sc.close();
     }
 }
