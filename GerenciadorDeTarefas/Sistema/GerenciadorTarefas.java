@@ -12,13 +12,14 @@ public class GerenciadorTarefas {
     }
 
     // Loop para que tarefas consigam ser removidas por ID.
-    public void removerTarefa(int ID) {
+    public boolean removerTarefa(int ID) {
         for (int i = 0; i < tarefas.size(); i++) {
             if (tarefas.get(i).getID() == ID) {
                 tarefas.remove(i);
-                break;
+                return true;
             }
         }
+        return false;
     }
 
     // Metodo para listar tarefas existentes.

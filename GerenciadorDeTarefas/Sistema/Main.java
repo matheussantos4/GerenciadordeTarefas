@@ -13,9 +13,9 @@ public class Main {
 
         Tarefa tarefa1 = new Tarefa("acorda");
         g1.adicionarTarefa(tarefa1);
-        Tarefa tarefa2 = new Tarefa("escvoar dente");
+        Tarefa tarefa2 = new Tarefa("escovar dente");
         g1.adicionarTarefa(tarefa2);
-        Tarefa tarefa3 = new Tarefa("Removerlixo");
+        Tarefa tarefa3 = new Tarefa("Remover lixo");
         g1.adicionarTarefa(tarefa3);
 
         // Loop para garantir a seleção de opções disponíveis no algoritmo.
@@ -30,10 +30,12 @@ public class Main {
                 System.out.print("Opção: ");
                 opcao = sc.nextInt();
 
+
             } catch (InputMismatchException e) {
                 System.out.println();
                 System.out.println("Opção inválida.");
                 System.out.println();
+                opcao = 0;
                 sc.nextLine();
             }
 
@@ -62,22 +64,26 @@ public class Main {
                             System.out.println("ID inválido.");
                             continue;
                         }
-                        g1.removerTarefa(IDremover);
+                        boolean sucesso = g1.removerTarefa(IDremover);
+                        if (sucesso) {
+                            System.out.println("Tarefa removida!");
+                        } else {
+                            System.out.println("ID não encontrado.");
+                        }
+
                     } catch (InputMismatchException e) {
                         System.out.println("ID inválido!");
                         sc.nextLine();
                     }
-                    System.out.println("Tarefa removida!");
-                    
                 } while (IDremover <= 0);
             }
 
             if (opcao == 3) {
                 g1.listarTarefas();
             }
-        }
 
-        while (opcao != 4);
+        } while (opcao != 4);
+
         System.out.println("Saindo...");
         sc.close();
     }
