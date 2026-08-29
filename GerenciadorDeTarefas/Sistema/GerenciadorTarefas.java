@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class GerenciadorTarefas {
 
-    ArrayList<Tarefa> tarefas = new ArrayList<>();
+    private ArrayList<Tarefa> tarefas = new ArrayList<>();
 
     // Metodo para adicionar tarefas
     public void adicionarTarefa(Tarefa tarefa) {
@@ -34,5 +34,9 @@ public class GerenciadorTarefas {
             }
             System.out.println();
         }
+    }
+
+    public boolean tarefasVazias() {
+        return tarefas.isEmpty();
     }
 }

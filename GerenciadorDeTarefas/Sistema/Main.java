@@ -54,28 +54,32 @@ public class Main {
             }
 
             if (opcao == 2) {
-                int IDremover = 0;
-                do {
-                    try {
-                        g1.listarTarefas();
-                        System.out.print("ID da tarefa a remover: ");
-                        IDremover = sc.nextInt();
-                        if (IDremover <= 0) {
-                            System.out.println("ID inválido.");
-                            continue;
-                        }
-                        boolean sucesso = g1.removerTarefa(IDremover);
-                        if (sucesso) {
-                            System.out.println("Tarefa removida!");
-                        } else {
-                            System.out.println("ID não encontrado.");
-                        }
+                if (g1.tarefasVazias()) {
+                    System.out.println("Não há tarefas a remover.");
+                } else {
+                    int IDremover = 0;
+                    do {
+                        try {
+                            g1.listarTarefas();
+                            System.out.print("ID da tarefa a remover: ");
+                            IDremover = sc.nextInt();
+                            if (IDremover <= 0) {
+                                System.out.println("ID inválido.");
+                                continue;
+                            }
+                            boolean sucesso = g1.removerTarefa(IDremover);
+                            if (sucesso) {
+                                System.out.println("Tarefa removida!");
+                            } else {
+                                System.out.println("ID não encontrado.");
+                            }
 
-                    } catch (InputMismatchException e) {
-                        System.out.println("ID inválido!");
-                        sc.nextLine();
-                    }
-                } while (IDremover <= 0);
+                        } catch (InputMismatchException e) {
+                            System.out.println("ID inválido!");
+                            sc.nextLine();
+                        }
+                    } while (IDremover <= 0);
+                }
             }
 
             if (opcao == 3) {
