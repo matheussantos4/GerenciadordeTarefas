@@ -26,7 +26,8 @@ public class Main {
                 System.out.println("(1) Adicionar tarefa");
                 System.out.println("(2) Remover tarefa");
                 System.out.println("(3) Listar tarefas");
-                System.out.println("(4) Sair");
+                System.out.println("(4) Alterar status tarefa");
+                System.out.println("(5) Sair");
                 System.out.print("Opção: ");
                 opcao = sc.nextInt();
 
