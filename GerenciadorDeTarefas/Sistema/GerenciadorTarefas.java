@@ -39,4 +39,14 @@ public class GerenciadorTarefas {
     public boolean tarefasVazias() {
         return tarefas.isEmpty();
     }
+
+    public boolean avancaTarefa(int ID, Estagios novoStatus) {
+        for (int i = 0; i < tarefas.size(); i++) {
+            if (tarefas.get(i).getID() == ID) {
+                tarefas.get(i).setStatus(novoStatus);
+                return true;
+            }
+        }
+        return false;
+    }
 }
