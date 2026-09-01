@@ -86,7 +86,33 @@ public class Main {
                 g1.listarTarefas();
             }
 
-        } while (opcao != 4);
+            if (opcao == 4) {
+                int IDmodificar = 0;
+                do {
+                    try {
+                        System.out.println("Selecionar tarefa por ID: ");
+                        IDmodificar = sc.nextInt();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Estágio inválido.");
+                        sc.nextLine();
+                    }
+                    Estagios novoStatus;
+
+                    switch (IDmodificar) {
+                        case 1:
+                            novoStatus = Estagios.EM_ANDAMENTO;
+                            break;
+                        case 2:
+                            novoStatus = Estagios.CONCLUIDA;
+                            break;
+                        case 3:
+                            novoStatus = Estagios.CANCELADA;
+                            break;
+                    }
+
+                } while (IDmodificar >= 1 || IDmodificar <= 3);
+            }
+        } while (opcao != 5);
 
         System.out.println("Saindo...");
         sc.close();
