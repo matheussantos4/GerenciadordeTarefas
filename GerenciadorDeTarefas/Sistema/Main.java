@@ -132,7 +132,7 @@ public class Main {
                             novoStatus = null;
                     }
                     g1.modificaTarefa(IDmodificar, novoStatus);
-                } while (IDmodificar >= 1 && IDmodificar <= 3);
+                } while (IDmodificar <= 0);
             }
         } while (opcao != 5);
 
