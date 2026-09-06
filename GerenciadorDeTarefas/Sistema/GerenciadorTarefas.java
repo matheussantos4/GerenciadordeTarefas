@@ -30,7 +30,7 @@ public class GerenciadorTarefas {
         } else {
             System.out.println();
             for (Tarefa tarefa : tarefas) {
-                System.out.printf("ID:" + tarefa.getID() + " " + tarefa.getNome() + "%n");
+                System.out.printf("ID:" + tarefa.getID() + " " + tarefa.getNome() + " " + tarefa.getStatus() + "%n");
             }
             System.out.println();
         }
@@ -40,7 +40,7 @@ public class GerenciadorTarefas {
         return tarefas.isEmpty();
     }
 
-    public boolean avancaTarefa(int ID, Estagios novoStatus) {
+    public boolean modificaTarefa(int ID, Estagios novoStatus) {
         for (int i = 0; i < tarefas.size(); i++) {
             if (tarefas.get(i).getID() == ID) {
                 tarefas.get(i).setStatus(novoStatus);
