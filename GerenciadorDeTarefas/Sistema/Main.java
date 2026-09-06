@@ -99,39 +99,40 @@ public class Main {
                         sc.nextLine();
                         continue;
                     }
-
-                    System.out.println("(1) EM ANDAMENTO");
-                    System.out.println("(2) CONCLUÍDA");
-                    System.out.println("(3) CANCELADA");
-                    System.out.println();
-                    System.out.print(":");
-
-                    try {
-                        Estagios novoStatus;
-                        int opcaoT = sc.nextInt();
-
-                        switch (opcaoT) {
-                            case 1:
-                                novoStatus = Estagios.EM_ANDAMENTO;
-                                System.out.println("Tarefa em andamento.");
-                                break;
-                            case 2:
-                                novoStatus = Estagios.CONCLUIDA;
-                                System.out.println("Tarefa concluída.");
-                                break;
-                            case 3:
-                                novoStatus = Estagios.CANCELADA;
-                                System.out.println("Tarefa cancelada!");
-                                break;
-                            default:
+                    int opcaoT = 0;
+                    do {
+                        System.out.println("(1) EM ANDAMENTO");
+                        System.out.println("(2) CONCLUÍDA");
+                        System.out.println("(3) CANCELADA");
+                        System.out.print(":");
+                        try {
+                            opcaoT = sc.nextInt();
+                            if (opcaoT < 1 || opcaoT > 3) {
                                 System.out.println("Estágio inválido.");
-                                novoStatus = Estagios.PENDENTE;
+                            }
+                        } catch (InputMismatchException e) {
+                            System.out.println("Opção inválida.");
+                            sc.nextLine();
+                            opcaoT = 0;
                         }
-                        g1.modificaTarefa(IDmodificar, novoStatus);
-                    } catch (InputMismatchException e) {
-                        System.out.println("Opção inválida.");
-                        sc.nextLine();
+                    } while (opcaoT < 1 || opcaoT > 3);
+                    // AQUI TERMINA O NOVO LOOP — nesse ponto, opcaoT com certeza é 1, 2 ou 3
+
+                    Estagios novoStatus;
+                    switch (opcaoT) {
+                        case 1:
+                            novoStatus = Estagios.EM_ANDAMENTO;
+                            break;
+                        case 2:
+                            novoStatus = Estagios.CONCLUIDA;
+                            break;
+                        case 3:
+                            novoStatus = Estagios.CANCELADA;
+                            break;
+                        default:
+                            novoStatus = null; // nunca vai cair aqui, já validamos acima
                     }
+                    g1.modificaTarefa(IDmodificar, novoStatus);
                 } while (IDmodificar >= 1 && IDmodificar <= 3);
             }
         } while (opcao != 5);
