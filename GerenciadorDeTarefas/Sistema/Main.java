@@ -116,7 +116,6 @@ public class Main {
                             opcaoT = 0;
                         }
                     } while (opcaoT < 1 || opcaoT > 3);
-                    // AQUI TERMINA O NOVO LOOP — nesse ponto, opcaoT com certeza é 1, 2 ou 3
 
                     Estagios novoStatus;
                     switch (opcaoT) {
@@ -130,7 +129,7 @@ public class Main {
                             novoStatus = Estagios.CANCELADA;
                             break;
                         default:
-                            novoStatus = null; // nunca vai cair aqui, já validamos acima
+                            novoStatus = null;
                     }
                     g1.modificaTarefa(IDmodificar, novoStatus);
                 } while (IDmodificar >= 1 && IDmodificar <= 3);
