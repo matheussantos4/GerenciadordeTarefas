@@ -91,27 +91,48 @@ public class Main {
                 int IDmodificar = 0;
                 do {
                     try {
-                        System.out.println("Selecionar tarefa por ID: ");
+                        g1.listarTarefas();
+                        System.out.print("Selecionar tarefa por ID: ");
                         IDmodificar = sc.nextInt();
                     } catch (InputMismatchException e) {
                         System.out.println("Estágio inválido.");
                         sc.nextLine();
-                    }
-                    Estagios novoStatus;
-
-                    switch (IDmodificar) {
-                        case 1:
-                            novoStatus = Estagios.EM_ANDAMENTO;
-                            break;
-                        case 2:
-                            novoStatus = Estagios.CONCLUIDA;
-                            break;
-                        case 3:
-                            novoStatus = Estagios.CANCELADA;
-                            break;
+                        continue;
                     }
 
-                } while (IDmodificar >= 1 || IDmodificar <= 3);
+                    System.out.println("(1) EM ANDAMENTO");
+                    System.out.println("(2) CONCLUÍDA");
+                    System.out.println("(3) CANCELADA");
+                    System.out.println();
+                    System.out.print(":");
+
+                    try {
+                        Estagios novoStatus;
+                        int opcaoT = sc.nextInt();
+
+                        switch (opcaoT) {
+                            case 1:
+                                novoStatus = Estagios.EM_ANDAMENTO;
+                                System.out.println("Tarefa em andamento.");
+                                break;
+                            case 2:
+                                novoStatus = Estagios.CONCLUIDA;
+                                System.out.println("Tarefa concluída.");
+                                break;
+                            case 3:
+                                novoStatus = Estagios.CANCELADA;
+                                System.out.println("Tarefa cancelada!");
+                                break;
+                            default:
+                                System.out.println("Estágio inválido.");
+                                novoStatus = Estagios.PENDENTE;
+                        }
+                        g1.modificaTarefa(IDmodificar, novoStatus);
+                    } catch (InputMismatchException e) {
+                        System.out.println("Opção inválida.");
+                        sc.nextLine();
+                    }
+                } while (IDmodificar >= 1 && IDmodificar <= 3);
             }
         } while (opcao != 5);
 
